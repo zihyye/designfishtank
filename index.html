@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영감이 샘솟는! 디자인 어항</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="main-container">
+        <header class="main-title">
+            <h1 class="title-top">영감이 샘솟는!</h1>
+            <h1 class="title-bottom">디자인 어항</h1>
+        </header>
+
+        <div class="aquarium-wrapper">
+            <div class="aquarium">
+                
+                <div class="category-block category-design">
+                    <a href="design.html" class="category-link">
+                        <h2 class="category-title">DESIGN 디자인</h2>
+                    </a>
+                    <ul>
+                        <li><a href="design.html#link-sites">레퍼런스</a></li>
+                        <li><a href="design.html#tools">폰트</a></li>
+                        <li><a href="design.html#basics">프로그램</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-block category-info">
+                    <a href="information.html" class="category-link">
+                        <h2 class="category-title">INFORMATION 정보</h2>
+                    </a>
+                    <ul>
+                        <li><a href="information.html#contest">디자인 공모전</a></li> 
+                        <li><a href="information.html#exhibition">전시</a></li>
+                        <li><a href="information.html#career">진로와 커리어</a></li>
+                        <li><a href="information.html#archive">트렌드 아카이브</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-block category-community">
+                    <a href="community.html" class="category-link">
+                        <h2 class="category-title">COMMUNITY 커뮤니티</h2>
+                    </a>
+                    <ul>
+                        <li><a href="community.html#list">커뮤니티 링크 모음</a></li> 
+                        <li><a href="community.html#about">about</a></li> 
+                    </ul>
+                </div>
+
+                <div class="aquarium-effect-layer">
+                    <div id="cursor-fish"></div>
+                    <div class="bubble bubble-1"></div><div class="bubble bubble-2"></div><div class="bubble bubble-3"></div>
+                    <div class="bubble bubble-4"></div><div class="bubble bubble-5"></div><div class="bubble bubble-6"></div>
+                    <div class="bubble bubble-7"></div><div class="bubble bubble-8"></div><div class="bubble bubble-9"></div>
+                    <div class="bubble bubble-10"></div><div class="bubble bubble-11"></div><div class="bubble bubble-12"></div>
+                    <div class="bubble bubble-13"></div><div class="bubble bubble-14"></div><div class="bubble bubble-15"></div>
+                    <div class="bubble bubble-16"></div><div class="bubble bubble-17"></div><div class="bubble bubble-18"></div>
+                    <div class="bubble bubble-19"></div><div class="bubble bubble-20"></div><div class="bubble bubble-21"></div>
+                    <div class="bubble bubble-22"></div><div class="bubble bubble-23"></div><div class="bubble bubble-24"></div>
+                    <div class="bubble bubble-25"></div><div class="bubble bubble-26"></div><div class="bubble bubble-27"></div>
+                    <div class="bubble bubble-28"></div><div class="bubble bubble-29"></div><div class="bubble bubble-30"></div>
+                    <div class="goldfish-swim goldfish-A"></div>
+                    <div class="goldfish-swim goldfish-B"></div>
+                    <div class="goldfish-swim goldfish-C"></div>
+                    <div class="goldfish-swim goldfish-D"></div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateText = (elementSelector, animationName, duration, delayRange) => {
+                const element = document.querySelector(elementSelector);
+                if (!element) return;
+                const textContent = element.textContent;
+                element.innerHTML = ''; 
+                textContent.split('').forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    span.style.display = 'inline-block';
+                    span.style.animation = `${animationName} ${duration}s ease-in-out infinite`;
+                    span.style.animationDelay = `${(Math.random() * delayRange).toFixed(2)}s`; 
+                    element.appendChild(span);
+                });
+            };
+            animateText('.title-top', 'wave-animation', 2.5, 0.8);
+            animateText('.title-bottom', 'wave-animation', 2.5, 0.8);
+        });
+    </script>
+    
+    <script src="tracking_fish.js"></script>
+    
+</body>
+</html>

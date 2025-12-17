@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMMUNITY 커뮤니티 - 상세 페이지</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="subpage-body">
+
+    <header class="top-header">
+        <div class="nav-title">
+            <a href="index.html">디자인 어항</a>
+        </div>
+        <nav class="top-nav">
+            <a href="design.html" class="nav-menu">DESIGN</a>
+            <a href="information.html" class="nav-menu">INFORMATION</a>
+            <a href="community.html" class="nav-menu">COMMUNITY</a>
+            
+            <span class="divider">|</span>
+            <a href="index.html" class="nav-button">home</a>
+        </nav>
+    </header>
+
+    <header class="subpage-header">
+        <h1 class="page-title">COMMUNITY 커뮤니티</h1>
+        
+        <nav class="sub-category-nav">
+            <ul>
+                <li><a href="#list">커뮤니티</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subpage-content">
+
+        <section id="list">
+            <h2>커뮤니티</h2>
+            
+       <article class="content-item">
+                <div class="item-image">
+                    <img src="images/notefolio_logo.png" alt="노트폴리오 로고" onerror="this.src='https://via.placeholder.com/600x300?text=Notefolio'">
+                </div>
+                <h3 class="item-title">노트폴리오 (Notefolio)</h3>
+                <p class="item-url"><a href="https://notefolio.net/" target="_blank">notefolio.net</a></p>
+                <p class="item-description">
+                    국내 최대 규모의 크리에이티브 네트워크 플랫폼입니다. 포트폴리오 공유를 통해 서로 피드백을 주고받으며, 디자인 채용 정보와 다양한 업계 소식을 접할 수 있습니다.
+                </p>
+            </article>
+
+        <article class="content-item">
+                <div class="item-image">
+                    <img src="images/deemo_logo.png" alt="디모 로고" onerror="this.src='https://via.placeholder.com/600x300?text=Deemo'">
+                </div>
+                <h3 class="item-title">디모 (Deemo)</h3>
+                <p class="item-url"><a href="https://deemo.kr/" target="_blank">deemo.kr</a></p>
+                <p class="item-description">
+    "디자이너 소통 어디서?"라는 슬로건을 가진 디자이너 전용 커뮤니티입니다.<br>
+    회사생활, 프리랜서 고민 상담부터 외주/구인구직 정보와 디자인 꿀팁까지 다양한 이야기를 나눌 수 있습니다.
+</p>
+            </article>
+
+        <section id="about">
+            <h2>About</h2>
+            
+            <article class="content-item">
+                <div class="item-image">
+                    <img src="images/about_us.png" alt="About 이미지" onerror="this.src='https://via.placeholder.com/600x300?text=About+Us'">
+                </div>
+                <h3 class="item-title">디자인 어항이란?</h3>
+                <p class="item-url">Site Information</p>
+                <p class="item-description">
+                    '디자인 어항'은 넓은 바다처럼 방대한 디자인 정보 속에서, 나에게 필요한 영감과 자료를 어항 속에 담아두듯 쉽게 찾아볼 수 있도록 만든 아카이빙 사이트입니다.
+                </p>
+            </article>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.sub-category-nav a');
+            const sections = document.querySelectorAll('.subpage-content section');
+            
+            const showSectionFromHash = () => {
+                const hash = window.location.hash; 
+                
+                if (hash) {
+                    let sectionFound = false;
+                    sections.forEach(section => {
+                        if (section.id === hash.substring(1)) {
+                            section.style.display = 'block';
+                            sectionFound = true;
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                    
+                    if (!sectionFound && sections.length > 0) {
+                        sections.forEach((sec, idx) => {
+                            sec.style.display = idx === 0 ? 'block' : 'none';
+                        });
+                    }
+                } else {
+                    // 해시가 없으면 첫 번째 섹션만 보이기
+                    sections.forEach((sec, idx) => {
+                        sec.style.display = idx === 0 ? 'block' : 'none';
+                    });
+                }
+            };
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetHash = link.getAttribute('href'); 
+                    sections.forEach(section => {
+                        if (section.id === targetHash.substring(1)) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            showSectionFromHash();
+            window.addEventListener('hashchange', showSectionFromHash);
+        });
+    </script>
+    
+    <div id="cursor-fish"></div>
+    <script src="tracking_fish.js"></script> 
+</body>
+</html>
